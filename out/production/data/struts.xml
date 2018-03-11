@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<!--<struts>-->
+<!--</struts>-->
+
+<struts>
+    <!-- 指定全局国际化资源文件 -->
+    <constant name="struts.custom.i18n.resources" value="mess"/>
+    <!-- 指定国际化编码所使用的字符集 -->
+    <constant name="struts.i18n.encoding" value="GBK"/>
+    <!--指定constant的name为devMode表示处于开发模式，value=true修改配置文件内容自动热替换而不需要每次重新发布-->
+    <constant name="struts.devMode" value="true"/>
+    <!-- 所有的Action定义都应该放在package下,Struts2中通过package来管理action,这里的包名name并不对应java类中的包 -->
+    <package name="user" extends="struts-default">
+
+        <!--注册逻辑-->
+        <action name="register" class="data.action.register.InsertAction" >
+            <result name="success">/login.jsp</result>
+            <result name="error">/register.jsp</result>
+        </action>
+
+        <!--登录逻辑-->
+        <action name="login" class="data.action.login.LoginAction" >
+            <result name="success">/choose.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+
+        <!--编辑我的信息-->
+        <action name="showmyinfo" class="data.action.manage.user.ShowSingleUser" >
+            <result name="success">/manageedituser.jsp</result>
+        </action>
+
+        <!--更新我的信息-->
+        <action name="updateuser" class="data.action.manage.user.UpdateUser" >
+            <result name="manager">/manageindex.jsp</result>
+            <result name="user">/choose.jsp</result>
+        </action>
+
+        <!--选择商品购买-->
+        <action name="readybuy" class="data.action.buy.InsertAction" >
+            <result name="success">/order.jsp</result>
+        </action>
+
+
+        <action name="goodslist" class="data.action.goods.SelectAction" >
+            <result name="success">/showproduct.jsp</result>
+            <result name="error">/choose.jsp</result>
+        </action>
+
+        <action name="userlist" class="data.action.manage.user.ShowUserList" >
+            <result name="success">/manageindex.jsp</result>
+        </action>
+
+        <action name="orderlist" class="data.action.orders.SelectAction" >
+            <result name="success">/order.jsp</result>
+            <result name="error">/index.jsp</result>
+        </action>
+
+        <action name="newuser" class="data.action.manage.user.NewUser" >
+            <result name="success">/manageindex.jsp</result>
+        </action>
+
+        <action name="showsingleuser" class="data.action.manage.user.ShowSingleUser" >
+            <result name="success">/manageedituser.jsp</result>
+        </action>
+
+        <action name="deleteuser" class="data.action.manage.user.DeleteUser" >
+            <result name="success">/manageindex.jsp</result>
+        </action>
+
+        <action name="pay" class="data.action.buy.PayAction" >
+            <result name="success">/order.jsp</result>
+        </action>
+
+        <action name="get" class="data.action.buy.GetAction" >
+            <result name="success">/order.jsp</result>
+        </action>
+
+        <action name="cancle" class="data.action.buy.CancleAction" >
+            <result name="success">/order.jsp</result>
+            <result name="manage">/manage.jsp</result>
+        </action>
+
+        <action name="manageorderlist" class="data.action.orders.SelectAllOrder" >
+            <result name="success">/manageorder.jsp</result>
+        </action>
+
+        <action name="managegoodslist" class="data.action.manage.goods.ShowGoodsList" >
+            <result name="success">/managegoods.jsp</result>
+        </action>
+
+        <action name="newgoods" class="data.action.manage.goods.NewGoods" >
+            <result name="success">/managegoods.jsp</result>
+        </action>
+
+        <action name="showsinglegoods" class="data.action.manage.goods.ShowSingleGoods" >
+            <result name="success">/manageeditgoods.jsp</result>
+        </action>
+
+        <action name="updategoods" class="data.action.manage.goods.UpdateGoods" >
+            <result name="success">/managegoods.jsp</result>
+        </action>
+
+        <action name="deletegoods" class="data.action.manage.goods.DeleteGoods" >
+            <result name="success">/managegoods.jsp</result>
+        </action>
+
+    </package>
+</struts>
